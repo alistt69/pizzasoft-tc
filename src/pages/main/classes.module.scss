@@ -1,0 +1,23 @@
+.table {
+  border: 1px solid #969696;
+  border-radius: 12px;
+  border-collapse: collapse;
+
+  .head {
+    th {
+      width: 300px;
+      text-align: start;
+      border: 1px solid #969696;
+      padding: 8px;
+    }
+  }
+
+  .body {
+
+    td {
+      border: 1px solid #969696;
+      padding: 8px;
+      text-align: left;
+    }
+  }
+}
