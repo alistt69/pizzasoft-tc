@@ -1,37 +1,27 @@
-import { Link, NavLink } from "react-router-dom";
-import { paths } from "@/routes/routes.ts";
-import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import classes from "./classes.module.scss"
+import { useGetEmployeesQuery } from "@/api";
+import { useAppSelector } from "@/store/hooks";
+import { RootState } from "@/store";
+import { setIsArchiveFilter, setRoleFilter } from "@/store/reducers/employeesSlice.ts";
+import { useDispatch } from "react-redux";
 
-type Employee = {
-    id: number;
-    name: string;
-    isArchive: boolean;
-    role: string;
-    phone: string;
-    birthday: string;
-};
 
 const MainPage = () => {
-    const [employees, setEmployees] = useState<Employee[]>([]);
-    const [roleFilter, setRoleFilter] = useState<string>('');
-    const [isArchiveFilter, setIsArchiveFilter] = useState<boolean>(false);
+    const dispatch = useDispatch();
+    const { data: employees = [], error, isLoading } = useGetEmployeesQuery(undefined);
+    const roleFilter = useAppSelector((state: RootState) => state.filters.roleFilter)
+    const isArchiveFilter = useAppSelector((state: RootState) => state.filters.isArchiveFilter)
     const [sortField, setSortField] = useState<string>('');
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
-    useEffect(() => {
-        fetch('/employees.json')
-            .then((response) => response.json())
-            .then((data) => setEmployees(data))
-            .catch((error) => console.error('Error fetching employees:', error));
-    }, []);
-
     const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setRoleFilter(event.target.value);
+        dispatch(setRoleFilter(event.target.value));
     };
 
     const handleArchiveChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIsArchiveFilter(event.target.checked);
+        dispatch(setIsArchiveFilter(event.target.checked));
     };
 
     const handleSort = (field: string) => {
@@ -70,18 +60,20 @@ const MainPage = () => {
             return 0;
         });
 
-    return(
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error loading employees</div>;
+
+    return (
         <div>
             main
-            <NavLink to={paths.MAIN}>aaaa</NavLink>
             <div>
                 <label>
                     Должность:
                     <select value={roleFilter} onChange={handleRoleChange}>
-                        <option value="">Все</option>
-                        <option value="cook">Повар</option>
-                        <option value="waiter">Официант</option>
-                        <option value="driver">Водитель</option>
+                        <option value="">All</option>
+                        <option value="cook">Cook</option>
+                        <option value="waiter">Waiter</option>
+                        <option value="driver">Driver</option>
                     </select>
                 </label>
                 <label>
@@ -90,38 +82,50 @@ const MainPage = () => {
                         checked={isArchiveFilter}
                         onChange={handleArchiveChange}
                     />
-                    В архиве
+                    Is archived
                 </label>
-                <button onClick={resetFilters}>Сбросить фильтры</button>
+                <button onClick={resetFilters}>Reset filters</button>
             </div>
             <div>
-                <p>Активные фильтры:</p>
+                <p>Active filters:</p>
                 <ul>
-                    {roleFilter && <li>Должность: {roleFilter}</li>}
-                    {isArchiveFilter && <li>В архиве</li>}
-                    {sortField && <li>Сортировка: {sortField} ({sortOrder})</li>}
+                    {roleFilter && <li>Role: {roleFilter}</li>}
+                    {isArchiveFilter && <li>Is archived</li>}
+                    {sortField && <li>sorted by: {sortField} ({sortOrder})</li>}
                 </ul>
             </div>
             <table className={classes.table}>
                 <thead className={classes.head}>
                 <tr>
-                    <th onClick={() => handleSort('name')}>Имя</th>
-                    <th>Должность</th>
-                    <th>Телефон</th>
-                    <th onClick={() => handleSort('birthday')}>Дата рождения</th>
+                    <th onClick={() => handleSort('name')}>Name</th>
+                    <th>Role</th>
+                    <th>Telephone</th>
+                    <th onClick={() => handleSort('birthday')}>Birthday</th>
                 </tr>
                 </thead>
                 <tbody className={classes.body}>
                 {filteredEmployees.map((employee) => (
                     <tr key={employee.id}>
-                            <td>
-                                <Link to={employee.id.toString()}>
-                                    {employee.name}
-                                </Link>
-                            </td>
-                            <td>{employee.role}</td>
-                            <td>{employee.phone}</td>
-                            <td>{employee.birthday}</td>
+                        <td>
+                            <Link to={employee.id.toString()}>
+                                {employee.name}
+                            </Link>
+                        </td>
+                        <td>
+                            <Link to={employee.id.toString()}>
+                                {employee.role}
+                            </Link>
+                        </td>
+                        <td>
+                            <Link to={employee.id.toString()}>
+                                {employee.phone}
+                            </Link>
+                        </td>
+                        <td>
+                            <Link to={employee.id.toString()}>
+                                {employee.birthday}
+                            </Link>
+                        </td>
                     </tr>
                 ))}
                 </tbody>

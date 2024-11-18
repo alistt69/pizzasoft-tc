@@ -1,47 +1,51 @@
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { paths } from "@/routes/routes.ts";
 import React, { useEffect, useState } from "react";
+import { useGetEmployeeByIdQuery, useUpdateEmployeeMutation } from "@/api";
+import { paths } from "@/routes/routes.ts";
+import { IEmployee } from "@/models";
 
-type Employee = {
-    id: number;
-    name: string;
-    isArchive: boolean;
-    role: string;
-    phone: string;
-    birthday: string;
-};
 
 const EmployeePage = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const [employee, setEmployee] = useState<Employee | null>(null);
+    const { data: employee, error, isLoading } = useGetEmployeeByIdQuery(Number(id));
+    const [updateEmployee] = useUpdateEmployeeMutation();
+    const [formState, setFormState] = useState<IEmployee>({
+        birthday: "",
+        id: 0,
+        isArchive: false,
+        name: "",
+        phone: "",
+        role: ""
+    });
 
     useEffect(() => {
-        fetch('/employees.json')
-            .then((response) => response.json())
-            .then((data) => {
-                const foundEmployee = data.find((emp: Employee) => emp.id === Number(id));
-                setEmployee(foundEmployee);
-            })
-            .catch((error) => console.error('Error fetching employee:', error));
-    }, [id]);
+        if (employee) {
+            setFormState(employee);
+        }
+    }, [employee]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (employee) {
+        if (formState) {
             const { name, value } = event.target;
-            setEmployee({ ...employee, [name]: value });
+            setFormState({ ...formState, [name]: value });
+            console.log(formState)
         }
     };
 
-    const handleSave = () => {
-
-        console.log('Сохраненные данные:', employee);
-        navigate('/');
+    const handleSave = async () => {
+        if (formState) {
+            await updateEmployee(formState);
+            console.log('Сохраненные данные:', formState);
+            navigate('/');
+        }
     };
 
-    if (!employee) {
-        return <div>Загрузка...</div>;
-    }
+    if (isLoading) return <div>Загрузка...</div>;
+    if (error) return <div>Ошибка загрузки сотрудника</div>;
+    if (!formState) return null;
+
+    console.log(formState)
 
     return (
         <div>
@@ -53,7 +57,7 @@ const EmployeePage = () => {
                     <input
                         type="text"
                         name="name"
-                        value={employee.name}
+                        value={formState.name}
                         onChange={handleInputChange}
                     />
                 </label>
@@ -64,7 +68,7 @@ const EmployeePage = () => {
                     <input
                         type="text"
                         name="role"
-                        value={employee.role}
+                        value={formState.role}
                         onChange={handleInputChange}
                     />
                 </label>
@@ -75,7 +79,7 @@ const EmployeePage = () => {
                     <input
                         type="text"
                         name="phone"
-                        value={employee.phone}
+                        value={formState.phone}
                         onChange={handleInputChange}
                     />
                 </label>
@@ -86,14 +90,14 @@ const EmployeePage = () => {
                     <input
                         type="text"
                         name="birthday"
-                        value={employee.birthday}
+                        value={formState.birthday}
                         onChange={handleInputChange}
                     />
                 </label>
             </div>
             <button onClick={handleSave}>Сохранить</button>
         </div>
-    )
+    );
 }
 
 export default EmployeePage;
