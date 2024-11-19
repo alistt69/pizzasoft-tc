@@ -2,6 +2,7 @@ import React from "react";
 import { IEmployee } from "@/models";
 import { Link } from "react-router-dom";
 
+
 const EmployeeRow: React.FC<{ employee: IEmployee }> = ({ employee }) => {
 
     return (

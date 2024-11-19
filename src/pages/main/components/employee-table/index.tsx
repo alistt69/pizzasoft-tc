@@ -1,7 +1,8 @@
-import { IEmployee } from "@/models";
-import classes from "../../classes.module.scss"
 import React from "react";
+import { IEmployee } from "@/models";
+import classes from "./classes.module.scss";
 import EmployeeRow from "@/pages/main/components/employee-table/employee-row";
+
 
 const EmployeeTable: React.FC<{ employees: IEmployee[]}> = ({ employees }) => {
 

@@ -1,0 +1,30 @@
+@import "src/styles/index";
+
+
+.table {
+  border-collapse: collapse;
+  border-radius: 12px;
+  border: 1px solid #969696;
+
+  .head {
+    th {
+      width: 300px;
+      text-align: start;
+      border: 1px solid #969696;
+      padding: 8px;
+    }
+  }
+
+  .body {
+    td {
+      text-align: left;
+      border: 1px solid #969696;
+
+      > a {
+        display: block;
+        padding: 8px;
+        color: rgba(255, 255, 255, 0.87);
+      }
+    }
+  }
+}

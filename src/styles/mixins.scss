@@ -1,0 +1,58 @@
+@mixin form-container {
+  position: relative;
+  padding: 15.5px 0 0;
+}
+
+@mixin form-field {
+  width: 100%;
+  border: 2px solid #969696;
+  border-radius: 6px;
+  outline: 0;
+  font-size: 15.5px;
+  color: rgba(255, 255, 255, 0.87);
+  padding: 8.5px;
+  background: transparent;
+  transition: all 0.2s;
+
+  option {
+    background-color: #242424;
+  }
+
+  &::placeholder {
+    font-size: 0;
+  }
+
+  &:placeholder-shown ~ .form_label {
+    font-size: 15.5px;
+    cursor: text;
+    top: 42%;
+    color: #969696;
+  }
+}
+
+@mixin form-label {
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  transition: 0.2s;
+  background-color: #242424;
+  font-size: 13px;
+  color: #969696;
+}
+
+@mixin form-field-focus {
+  ~ .form_label {
+    position: absolute;
+    top: 5px;
+    display: block;
+    transition: 0.2s;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.87);
+  }
+
+  border-image-slice: 1;
+  border-color: rgba(255, 255, 255, 0.87);
+}

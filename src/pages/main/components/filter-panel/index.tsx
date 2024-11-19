@@ -1,3 +1,4 @@
+import React from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store";
 import {
@@ -7,8 +8,7 @@ import {
     setSortField,
     setSortOrder
 } from "@/store/reducers/employeesSlice.ts";
-import classes from "../../classes.module.scss"
-import React from "react";
+import classes from "./classes.module.scss"
 
 
 const FilterPanel = () => {

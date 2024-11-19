@@ -1,1 +1,20 @@
-.
+@import "src/styles/index";
+
+.form_container {
+  @include form-container;
+
+  &.name {
+  }
+
+  .form_field {
+    @include form-field;
+
+    &:focus {
+      @include form-field-focus;
+    }
+  }
+
+  .form_label {
+    @include form-label;
+  }
+}
