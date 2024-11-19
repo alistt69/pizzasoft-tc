@@ -10,14 +10,7 @@ const EmployeePage = () => {
     const navigate = useNavigate();
     const { data: employee, error, isLoading } = useGetEmployeeByIdQuery(Number(id));
     const [updateEmployee] = useUpdateEmployeeMutation();
-    const [formState, setFormState] = useState<IEmployee>({
-        birthday: "",
-        id: 0,
-        isArchive: false,
-        name: "",
-        phone: "",
-        role: ""
-    });
+    const [formState, setFormState] = useState<IEmployee>();
 
     useEffect(() => {
         if (employee) {
@@ -51,6 +44,8 @@ const EmployeePage = () => {
         <div>
             <NavLink to={paths.ROOT}>back</NavLink>
             <h2>Детали сотрудника</h2>
+            <form>
+            </form>
             <div>
                 <label>
                     Имя:
