@@ -76,7 +76,7 @@ const FilterPanel = () => {
                 <label htmlFor="sort" className={classes.form_label}>Sort By</label>
             </div>
 
-            <button className={classes.reset_btn} onClick={() => dispatch(resetFilters())}>Reset filters</button>
+            <button className={classes.reset_btn} onClick={() => dispatch(resetFilters())}>Reset Filters</button>
         </div>
     );
 };

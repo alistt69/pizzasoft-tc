@@ -48,7 +48,7 @@ const MainPage = () => {
     if (error) return <div>Error loading employees</div>;
 
     return (
-        <div>
+        <div style={{display: "flex", justifyItems: "center", flexDirection: "column"}}>
             <FilterPanel />
             <EmployeeTable employees={filteredEmployees} />
         </div>

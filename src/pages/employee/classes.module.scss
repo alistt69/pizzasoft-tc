@@ -1,20 +1,86 @@
 @import "src/styles/index";
 
-.form_container {
-  @include form-container;
+.employee_container {
+  position: relative;
+  max-width: 700px;
+  padding: 20px;
+  margin: calc(4vh + 6vw) auto;
 
-  &.name {
-  }
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.14);
 
-  .form_field {
-    @include form-field;
+  .heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 
-    &:focus {
-      @include form-field-focus;
+    .back_btn {
+      > span > svg {
+        height: 20px;
+        width: 20px;
+        color: rgba(255, 255, 255, 0.87);
+        transition: all .4s ease;
+
+        &:hover {
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 
-  .form_label {
-    @include form-label;
+  .form {
+    .form_container {
+      @include form-container;
+
+      .form_field {
+        @include form-field;
+
+        &:focus {
+          @include form-field-focus;
+        }
+      }
+
+      .form_label {
+        @include form-label;
+      }
+    }
+
+    .checkbox_container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 12px;
+      gap: 6px;
+      cursor: pointer;
+
+      .checkbox {
+        border-radius: 3px;
+        transition: all .4s ease;
+
+        > span > svg {
+          height: 20px;
+          width: 20px;
+          color: rgba(150, 3, 3, 0.59);
+        }
+
+        &.active {
+          > span > svg {
+            color: rgba(0, 152, 8, 0.29);
+          }
+        }
+      }
+
+      .label {
+        line-height: 15px;
+        cursor: pointer;
+      }
+    }
+
+    .save_btn {
+      @include action-button-style(rgba(0, 152, 8, 0.29));
+      margin-top: 20px;
+    }
   }
 }

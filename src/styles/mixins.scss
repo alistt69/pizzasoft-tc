@@ -1,17 +1,24 @@
 @mixin form-container {
   position: relative;
   padding: 15.5px 0 0;
+
+  &.name {max-width: 600px}
+  &.role {max-width: 400px}
+  &.phone, &.birthday {max-width: 450px}
 }
 
 @mixin form-field {
-  width: 100%;
-  border: 2px solid #969696;
-  border-radius: 6px;
   outline: 0;
+  width: 100%;
+  padding: 8.5px;
+
   font-size: 15.5px;
   color: rgba(255, 255, 255, 0.87);
-  padding: 8.5px;
+
   background: transparent;
+  border: 2px solid #969696;
+  border-radius: 6px;
+
   transition: all 0.2s;
 
   option {
@@ -23,36 +30,51 @@
   }
 
   &:placeholder-shown ~ .form_label {
-    font-size: 15.5px;
-    cursor: text;
     top: 42%;
+    font-size: 15.5px;
     color: #969696;
+    cursor: text;
   }
 }
 
 @mixin form-label {
+  display: block;
   position: absolute;
   top: 5px;
   left: 14px;
-  margin: 0;
-  padding: 0;
-  display: block;
-  transition: 0.2s;
-  background-color: #242424;
+
   font-size: 13px;
   color: #969696;
+
+  background-color: #242424;
+
+  transition: 0.2s;
 }
 
 @mixin form-field-focus {
   ~ .form_label {
-    position: absolute;
-    top: 5px;
-    display: block;
-    transition: 0.2s;
-    font-size: 13px;
     color: rgba(255, 255, 255, 0.87);
+    transition: 0.2s;
   }
 
-  border-image-slice: 1;
   border-color: rgba(255, 255, 255, 0.87);
+}
+
+@mixin action-button-style($bg-color) {
+  height: 33px;
+  width: 130px;
+  margin-top: 12px;
+
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.87);
+
+  border: none;
+  border-radius: 17px;
+  background-color: $bg-color;
+
+  transition: all 0.4s;
+
+  &:hover {
+    box-shadow: 0 0 15px $bg-color;
+  }
 }

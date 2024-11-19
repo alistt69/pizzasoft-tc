@@ -2,7 +2,7 @@
 
 
 .filter_panel {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 
   .form_container {
     max-width: 200px;
@@ -22,19 +22,6 @@
   }
 
   .reset_btn {
-    height: 33px;
-    width: 130px;
-    margin-top: 12px;
-    border: none;
-    border-radius: 17px;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: rgba(150, 3, 3, 0.59);
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.4s;
-
-    &:hover {
-      box-shadow: 3px 3px 10px rgba(150, 3, 3, 0.59);
-    }
+    @include action-button-style(rgba(150, 3, 3, 0.59));
   }
 }

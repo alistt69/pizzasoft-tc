@@ -4,15 +4,15 @@
       "id": "1",
       "name": "Илья Емельянов",
       "isArchive": false,
-      "role": "driverds",
-      "phone": "+7 (883) 508-3269",
-      "birthday": "12.02.1982"
+      "role": "cook",
+      "phone": "+7 (883) 504-3122",
+      "birthday": "14.02.1982"
     },
     {
       "id": "2",
       "name": "Александр Ларионов",
-      "isArchive": true,
-      "role": "waitera",
+      "isArchive": false,
+      "role": "waiter",
       "phone": "+7 (823) 440-3602",
       "birthday": "26.01.1986"
     },
@@ -26,9 +26,9 @@
     },
     {
       "id": "4",
-      "name": "Олимпиада Макароваk",
-      "isArchive": true,
-      "role": "waiter",
+      "name": "Олимпиада Макарова",
+      "isArchive": false,
+      "role": "driver",
       "phone": "+7 (945) 447-2286",
       "birthday": "06.01.1987"
     },
@@ -43,7 +43,7 @@
     {
       "id": "6",
       "name": "Кира Колесникова",
-      "isArchive": true,
+      "isArchive": false,
       "role": "cook",
       "phone": "+7 (929) 592-3637",
       "birthday": "25.02.1972"
