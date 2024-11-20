@@ -1,0 +1,32 @@
+@import "../buttons";
+@import "../forms";
+
+@mixin employee-forms {
+  position: relative;
+  max-width: 700px;
+  padding: 20px;
+  margin: calc(4vh + 6vw) auto;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.14);
+
+  .heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .back_btn {
+      > span > svg {
+        height: 20px;
+        width: 20px;
+        color: $main-color;
+        transition: all .4s ease;
+
+        &:hover {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../consts";
+
+@mixin action-button-style($bg-color) {
+  height: 33px;
+  width: 130px;
+  margin-top: 12px;
+
+  font-size: $font-s;
+  color: $main-color;
+
+  border: none;
+  border-radius: 17px;
+  background-color: $bg-color;
+  transition: all 0.4s;
+
+  &:hover {
+    box-shadow: 0 0 15px $bg-color;
+  }
+}

@@ -3,6 +3,7 @@
 
 .table_wrap {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   padding: 15px;
@@ -13,25 +14,26 @@
   .table {
     border-collapse: collapse;
     width: 100%;
+    font-size: $font-m-adaptive;
 
     .head {
       > tr > th {
         width: 300px;
         text-align: start;
         padding: 8px;
-        border: 1px solid #969696;
+        border: 1px solid $secondary-color;
       }
     }
 
     .body {
       > tr > td {
         text-align: left;
-        border: 1px solid #969696;
+        border: 1px solid $secondary-color;
 
         > a {
           display: block;
           padding: 8px;
-          color: rgba(255, 255, 255, 0.87);
+          color: $main-color;
         }
       }
     }

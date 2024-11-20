@@ -1,27 +1,52 @@
 @import "src/styles/index";
 
 
-.filter_panel {
-  margin-bottom: 12px;
+.filter_wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-gap: 12px;
+  padding: 15px 15px 0;
 
-  .form_container {
-    max-width: 200px;
-    @include form-container;
+  .filter_panel {
+    margin-bottom: 12px;
 
-    .form_field {
-      @include form-field;
+    .form_container {
+      max-width: 200px;
+      @include form-container;
 
-      &:focus {
-        @include form-field-focus;
+      .form_field {
+        @include form-field;
+
+        &:focus {
+          @include form-field-focus;
+        }
+      }
+
+      .form_label {
+        @include form-label;
       }
     }
 
-    .form_label {
-      @include form-label;
+    .reset_btn {
+      @include action-button-style($accent-red-color);
     }
   }
 
-  .reset_btn {
-    @include action-button-style(rgba(150, 3, 3, 0.59));
+  .add_btn {
+    align-self: end;
+    justify-self: end;
+    text-align: center;
+    padding-top: 4.5px;
+    margin-bottom: 12px;
+
+    @include action-button-style(rgba(15, 107, 196, 0.6));
+  }
+
+  @media (max-width: 432px) {
+
+    .add_btn {
+      margin-top: 0;
+      justify-self: start;
+    }
   }
 }

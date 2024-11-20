@@ -1,5 +1,5 @@
 export interface IEmployee {
-    id: number;
+    id?: string;
     name: string;
     isArchive: boolean;
     role: string;

@@ -1,15 +1,18 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import { paths } from "@/routes/routes.ts";
 import RootLayout from "@/layouts/root";
+import ErrorPage from "@/pages/error";
 import MainPage from "@/pages/main";
-import EmployeePage from "@/pages/employee";
+import EditEmployeePage from "@/pages/edit-employee";
+import AddEmployeePage from "@/pages/add-employee";
 
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path={paths.ROOT} element={<RootLayout/>}>
+        <Route path={paths.ROOT} element={<RootLayout/>} errorElement={<ErrorPage />}>
             <Route index element={<MainPage />} />
-            <Route path={paths.ID} element={<EmployeePage />} />
+            <Route path={paths.ID} element={<EditEmployeePage />} />
+            <Route path={paths.ADD} element={<AddEmployeePage />} />
         </Route>
     ),
     {

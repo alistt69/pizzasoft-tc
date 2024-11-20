@@ -2,12 +2,12 @@
 @import 'normalize';
 @import 'mixins';
 
-:root {
 
+:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
 
-  color: rgba(255, 255, 255, 0.87);
+  color: $main-color;
   background-color: #242424;
 
   font-synthesis: none;

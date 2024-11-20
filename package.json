@@ -13,6 +13,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
     "@reduxjs/toolkit": "^2.3.0",
+    "antd": "^5.22.1",
     "axios": "^1.7.7",
     "dom": "^0.0.3",
     "input": "^1.0.1",

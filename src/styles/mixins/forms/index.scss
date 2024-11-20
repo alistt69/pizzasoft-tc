@@ -1,6 +1,8 @@
+@import "../../consts";
+
 @mixin form-container {
   position: relative;
-  padding: 15.5px 0 0;
+  padding: $font-m 0 0;
 
   &.name {max-width: 600px}
   &.role {max-width: 400px}
@@ -8,17 +10,16 @@
 }
 
 @mixin form-field {
-  outline: 0;
   width: 100%;
+  outline: 0;
   padding: 8.5px;
 
-  font-size: 15.5px;
-  color: rgba(255, 255, 255, 0.87);
+  font-size: $font-m;
+  color: $main-color;
 
   background: transparent;
-  border: 2px solid #969696;
+  border: 2px solid $secondary-color;
   border-radius: 6px;
-
   transition: all 0.2s;
 
   option {
@@ -31,8 +32,8 @@
 
   &:placeholder-shown ~ .form_label {
     top: 42%;
-    font-size: 15.5px;
-    color: #969696;
+    font-size: $font-m;
+    color: $secondary-color;
     cursor: text;
   }
 }
@@ -42,39 +43,24 @@
   position: absolute;
   top: 5px;
   left: 14px;
+  padding: 0 .5px;
 
-  font-size: 13px;
-  color: #969696;
+  font-size: $font-xs;
+  color: $secondary-color;
 
-  background-color: #242424;
-
+  background-color: #1f1f1f;
   transition: 0.2s;
 }
 
 @mixin form-field-focus {
   ~ .form_label {
-    color: rgba(255, 255, 255, 0.87);
+    display: block;
+    top: 5px;
+    font-size: $font-xs;
+    color: $main-color;
     transition: 0.2s;
   }
 
-  border-color: rgba(255, 255, 255, 0.87);
-}
-
-@mixin action-button-style($bg-color) {
-  height: 33px;
-  width: 130px;
-  margin-top: 12px;
-
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.87);
-
-  border: none;
-  border-radius: 17px;
-  background-color: $bg-color;
-
-  transition: all 0.4s;
-
-  &:hover {
-    box-shadow: 0 0 15px $bg-color;
-  }
+  border-image-slice: 1;
+  border-color: $main-color;
 }

@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import { useGetEmployeesQuery } from "@/api";
 import { useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store";
+import { useEffect } from "react";
 import FilterPanel from "@/pages/main/components/filter-panel";
 import EmployeeTable from "@/pages/main/components/employee-table";
 

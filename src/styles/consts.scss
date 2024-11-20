@@ -1,0 +1,11 @@
+$main-color: rgba(255, 255, 255, 0.85);
+$secondary-color: #969696;
+
+$accent-green-color: rgba(0, 152, 8, 0.29);
+$accent-red-color: rgba(150, 3, 3, 0.59);
+
+$font-xs: 13px;
+$font-s: 15px;
+$font-m: 15.5px;
+
+$font-m-adaptive: max(calc(calc(.5vh + .5vw) * .8471), 11px)
