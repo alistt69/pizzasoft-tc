@@ -84,7 +84,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({ formState, handleInputChang
                 <div className={`${classes.checkbox} ${formState.isArchive && classes.active}`}>
                     {formState.isArchive ? <CheckCircleOutlined/> : <CloseCircleOutlined/>}
                 </div>
-                <label className={classes.label}>Archived</label>
+                <div className={classes.label}>Archived</div>
             </div>
 
             <button className={classes.save_btn} type="submit">Save</button>

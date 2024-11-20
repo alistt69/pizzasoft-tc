@@ -27,7 +27,7 @@ export const employeeApi = createApi({
 
         createEmployee: builder.mutation<IEmployee, Partial<IEmployee>>({
             query: (newEmployee) => ({
-                url: '/employees',
+                url: '/',
                 method: 'POST',
                 body: newEmployee,
             }),

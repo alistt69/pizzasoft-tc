@@ -1,3 +1,4 @@
+import React from 'react';
 import { useGetEmployeesQuery } from "@/api";
 import { useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store";
@@ -6,7 +7,7 @@ import FilterPanel from "@/pages/main/components/filter-panel";
 import EmployeeTable from "@/pages/main/components/employee-table";
 
 
-const MainPage = () => {
+const MainPage: React.FC = () => {
     const { data: employees = [], error, isLoading, refetch } = useGetEmployeesQuery(undefined);
     const roleFilter = useAppSelector((state: RootState) => state.filters.roleFilter);
     const archiveFilter = useAppSelector((state: RootState) => state.filters.archiveFilter);
@@ -18,7 +19,7 @@ const MainPage = () => {
         return new Date(year, month - 1, day);
     };
 
-    const filteredEmployees = employees
+    const filteredEmployees = (employees || [])
         .filter((employee) => (roleFilter ? employee.role === roleFilter : true))
         .filter((employee) => {
             if (archiveFilter === 'archived') return employee.isArchive;
